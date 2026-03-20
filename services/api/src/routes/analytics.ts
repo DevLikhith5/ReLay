@@ -1,9 +1,9 @@
-// import { Router }        from 'express';
-// import { getAnalytics }  from '../controllers/analytics.controller';
-// import { asyncHandler }  from '../middleware/errorHandler';
+import { Router }        from 'express';
+import { getAnalytics }  from '../controllers/analytics.controller';
+import { asyncHandler }  from '../middleware/errorHandler';
 
-// const router = Router();
+const router = Router();
 
-// router.get('/:code', asyncHandler(getAnalytics));
+router.get('/:code', asyncHandler(getAnalytics));
 
-// export default router;
+export default router;

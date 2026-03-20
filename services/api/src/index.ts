@@ -20,5 +20,7 @@ app.use('/',redirectRoutes)
 
 app.use(errorHandler);
 
+
+
 const PORT = process.env.PORT ?? 3000;
 app.listen(PORT, () => console.log(`API running on port ${PORT}`));

@@ -20,9 +20,7 @@ export class ShardRouterService {
           .update(`${shard}#${i}`)
           .digest("hex");
 
-        console.log(`Hash for ${shard}#${i} is ${hash}`)
         const position = parseInt(hash.slice(0, 8), 16);
-        console.log(`Position for ${shard}#${i} is ${position}`)
         tempRing.push({
           position,
           shardId: shard,

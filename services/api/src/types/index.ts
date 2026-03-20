@@ -22,9 +22,11 @@ export interface ClickEvent {
   shortCode: string;
   shardId:   string;
   country:   string;
+  city?:     string;
   device:    string;
   timestamp: number;
 }
+
 
 export interface AppError extends Error {
   statusCode: number;

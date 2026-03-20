@@ -15,15 +15,21 @@
   "dependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.6",
+    "@types/geoip-lite": "^1.4.4",
+    "@types/ua-parser-js": "^0.7.39",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "geoip-lite": "^1.4.10",
     "ioredis": "^5.10.1",
-    "pg": "^8.20.0"
+    "pg": "^8.20.0",
+    "ua-parser-js": "^2.0.9"
   },
   "devDependencies": {
     "@types/ioredis": "^4.28.10",
+    "@types/kafkajs": "^1.8.2",
     "@types/node": "^25.5.0",
     "@types/pg": "^8.18.0",
+    "kafkajs": "^2.2.4",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"

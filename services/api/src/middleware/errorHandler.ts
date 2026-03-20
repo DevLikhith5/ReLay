@@ -41,6 +41,7 @@ export function errorHandler(
 export function asyncHandler(
   fn: (req: Request, res: Response, next: NextFunction) => Promise<any>
 ) {
+  console.log("I AM IN ASYNC HANDLER")
   return (req: Request, res: Response, next: NextFunction) => {
     fn(req, res, next).catch(next);
   };

@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '6379:6379'
+    networks:
+      - relay-network
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    restart: unless-stopped
+
+  postgres-0:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: ReLay
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    ports:
+      - '5435:5432'
+    volumes:
+      - './postgres/init.sql:/docker-entrypoint-initdb.d/init.sql'
+      - 'pg0-data:/var/lib/postgresql/data'
+    networks:
+      - relay-network
+    restart: unless-stopped
+
+  postgres-1:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: ReLay
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    ports:
+      - '5433:5432'
+    volumes:
+      - './postgres/init.sql:/docker-entrypoint-initdb.d/init.sql'
+      - 'pg1-data:/var/lib/postgresql/data'
+    networks:
+      - relay-network
+    restart: unless-stopped
+
+  postgres-2:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: ReLay
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    ports:
+      - '5434:5432'
+    volumes:
+      - './postgres/init.sql:/docker-entrypoint-initdb.d/init.sql'
+      - 'pg2-data:/var/lib/postgresql/data'
+    networks:
+      - relay-network
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '5050:80'
+    networks:
+      - relay-network
+
+volumes:
+  pg0-data:
+  pg1-data:
+  pg2-data:
+
+networks:
+  relay-network:
+    driver: bridge
